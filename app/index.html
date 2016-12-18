@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Title Here</title>
+<!-- build:css styles/main.css -->
+<link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Important: you'll only need one of the Bootcards CSS files below for every platform -->
+
+<!-- Bootcards CSS for iOS: -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-ios.min.css">
+
+<!-- Bootcards CSS for Android: -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-android.min.css">
+
+<!-- Bootcards CSS for desktop: -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css">
+<link rel="stylesheet" href="app.css">
+
+<!-- Bootstrap and Bootcards JS -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script>
+<!-- endbuild -->
+      
+</head>
+
+<body ng-app="FraazoApp">
+	
+    
+        
+	<div class="container">
+        
+   <div class="navbar-xs navbar-fixed-top" style="background-color:#9d2128!important;">
+   <div class="navbar-danger">
+      <nav class="navbar navbar-static-top" role="navigation">
+          
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-8">
+                 <span class="sr-only">Toggle navigation</span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Brand</a>
+          </div>  
+       
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" class = "white"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#" class = "white"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              </ul>
+          </div>
+      </nav>     
+  </div>
+</div> 
+        
+        
+        
+        
+        <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome to Hospitality Services</h1>
+        <p>We provide best services around the globle with excellent customer service.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+      </div>
+    </div>
+        
+        
+        
+        
+		<div class = "row" ng-controller = "itemsctrl">
+            <div class="col-md-3 col-xs-3" ng-repeat = "item in itemlist">
+               <!-- <table class="table">
+    <thead>
+      <tr>
+          <th></th>
+        <th>Items</th>
+        <th>Category</th>
+        <th>soldAs</th>
+        <th>Price</th>
+          
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat = "item in itemlist">
+          <td><img ng-src="{{item.url}}" class = "img-thumbnail" width="100" height="100"></td>
+        <td>{{item.name}}</td>
+          <td>{{item.type}}</td>
+          <td>{{item.soldAs}}</td>
+        
+        <td><input type = "number" ng-model = "item.prize"></td>
+      </tr>
+     
+    </tbody>
+  </table> -->
+             
+                
+            <div class="panel panel-default bootcards-media">
+  <div class="panel-heading clearfix" >
+    <h4 class="pull-left text-danger">{{item.name}}</h4>
+
+    <!--small screen component-->
+    <div class="btn-group pull-right visible-xs">
+      <a class="btn btn-danger" href="/notes/edit"  
+        data-toggle="modal"
+        data-target="#editModal">  
+        <i class="fa fa-pencil"></i>
+        <span>Edit</span>
+      </a>
+    </div>  
+
+    <!--big screen component-->
+    <a class="btn btn-danger pull-right hidden-xs" href="/notes/edit"
+      data-toggle="modal"
+      data-target="#editModal">  
+      <i class="fa fa-pencil"></i>
+      <span>Edit</span>
+    </a>
+
+  </div>
+  <div class="panel-body">
+      <div style="width:100%;height:200px;">
+     <img ng-src="{{item.url}}" width = "100%"/>
+  </div>
+    Details here...
+  </div>
+  
+  <div class="panel-footer">
+    <!--small class="pull-left">Built with Bootcards - Media Card</small-->
+      
+      
+      
+      
+      <div class="input-group">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         {{item.buyOption}} <i class = "glyphicon glyphicon-menu-down" style = "font-size:80%;"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
+                        
+            <li><a href="#" ng-click="selectBuy(item,'Piece')">Piece </a></li>
+                        <li><a href="#" ng-click="selectBuy(item,'Kg')">Kg</a></li>
+                        <li><a href="#" ng-click="selectBuy(item,'dozen')">Dozen</a></li>
+                      </ul>
+      </div>
+      <input type="text" class="form-control" aria-label="Quantity" width="10">
+          <span class="input-group-btn">
+        <button class = "btn btn-success"> <i class = "glyphicon glyphicon-shopping-cart"></i> </button>
+      </span>
+    </div>
+      
+      
+      
+  </div>  
+
+</div>   
+              
+                
+                
+                
+                
+            </div>
+            
+        </div>
+	</div>
+	<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+
+</body>
+
+</html>
